@@ -12,13 +12,9 @@ const cvData = {
     email: 'edemq123@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/edemq/',
     gitHub: 'https://github.com/KoblaQ',
-    aboutMe: `A recent graduate with a strong foundation in full stack software development, experienced in
-    React, Node.JS and PostgreSQL through academic projects and an internship as a software
-    developer.\n
-    I bring prior professional experience from other Finnish workplaces, where I developed teamwork,
-    coordination, and communication skills in both English and Finnish.\n
-    I am passionate about building meaningful technical solutions, thrive in collaborative
-    environments, and continuously invest in expanding my skills.\n
+    aboutMe: `A recent graduate with a strong foundation in full stack software development, experienced in React, Node.JS and PostgreSQL through academic projects and an internship as a software developer.\n
+    I bring prior professional experience from other Finnish workplaces, where I developed teamwork, coordination, and communication skills in both English and Finnish.\n
+    I am passionate about building meaningful technical solutions, thrive in collaborative environments, and continuously invest in expanding my skills.\n
     My goal is to grow as a software developer in a dynamic and innovative environment.`,
   },
   workExperience: [
