@@ -1,7 +1,10 @@
-import express, { Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import userService from '../services/userService';
 
-import { User } from '../types';
+import { NewUserEntrySchema } from '../utils';
+import { z } from 'zod';
+
+import { NewUserEntry, User } from '../types';
 
 const router = express.Router();
 
@@ -21,7 +24,37 @@ router.get('/:id', (req, res: Response<User | { error: string }>) => {
   }
 });
 
-// Add User
-// router.post()
+// Add User (Using Zod for Validation)
+const newUserParser = (req: Request, _res: Response, next: NextFunction) => {
+  try {
+    NewUserEntrySchema.parse(req.body);
+    next();
+  } catch (error: unknown) {
+    next(error);
+  }
+};
 
+const errorMiddleWare = (
+  error: unknown,
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  if (error instanceof z.ZodError) {
+    res.status(400).send({ error: error.issues });
+  } else {
+    next(error);
+  }
+};
+
+router.post(
+  '/',
+  newUserParser,
+  async (req: Request<unknown, unknown, NewUserEntry>, res: Response<User>) => {
+    const addedEntry = await userService.addUser(req.body);
+    res.json(addedEntry);
+  },
+);
+
+router.use(errorMiddleWare);
 export default router;

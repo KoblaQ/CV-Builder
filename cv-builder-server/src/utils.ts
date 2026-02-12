@@ -17,7 +17,7 @@ export const NewUserEntrySchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
   email: z.string(),
-  passwordHash: z.string(),
+  password: z.string(),
   cvs: z.array(z.string()).optional(),
 });
 
