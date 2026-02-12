@@ -7,10 +7,10 @@ import {
   SkillEntry,
   ProjectEntry,
   LanguageEntry,
-  CertificationEntry,
+  CertificateEntry,
 } from './types';
 
-import { object, z } from 'zod';
+import { z } from 'zod';
 
 // User Entry Schema
 export const NewUserEntrySchema = z.object({
@@ -47,12 +47,12 @@ export const NewAboutMeEntrySchema = z.object({
   isVisible: z.boolean(),
 });
 
-export const toNewAboutMeEntrySchema = (object: unknown): AboutMeEntry => {
+export const toNewAboutMeEntry = (object: unknown): AboutMeEntry => {
   return NewAboutMeEntrySchema.parse(object);
 };
 
 // WorkExperience Entry Schema
-export const NewWorkExperienceSchema = z.object({
+export const NewWorkExperienceEntrySchema = z.object({
   companyName: z.string(),
   position: z.string(),
   startDate: z.string(),
@@ -61,10 +61,73 @@ export const NewWorkExperienceSchema = z.object({
   isVisible: z.boolean(),
 });
 
-export const toNewWorkExperienceSchema = (
+export const toNewWorkExperienceEntry = (
   object: unknown,
 ): WorkExperienceEntry => {
-  return NewWorkExperienceSchema.parse(object);
+  return NewWorkExperienceEntrySchema.parse(object);
 };
 
-//
+// Education Entry Schema
+export const NewEducationEntrySchema = z.object({
+  degree: z.string(),
+  fieldOfStudy: z.string(),
+  institution: z.string(),
+  startYear: z.number(),
+  endYear: z.number().optional(),
+  gpa: z.string().optional(),
+  isVisible: z.boolean(),
+});
+
+export const toNewEducationEntry = (object: unknown): EducationEntry => {
+  return NewEducationEntrySchema.parse(object);
+};
+
+// Skill Entry Schema
+export const NewSkillEntrySchema = z.object({
+  name: z.string(),
+  category: z.string(),
+  keywords: z.array(z.string()),
+  orderIndex: z.number().optional(),
+  isVisible: z.boolean(),
+});
+
+export const toNewSkillEntry = (object: unknown): SkillEntry => {
+  return NewSkillEntrySchema.parse(object);
+};
+
+// Project Entry Schema
+export const NewProjectEntrySchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  techStack: z.array(z.string()),
+  url: z.string(),
+  isVisible: z.boolean(),
+});
+
+export const toNewProjectEntry = (object: unknown): ProjectEntry => {
+  return NewProjectEntrySchema.parse(object);
+};
+
+// Language Entry Schema
+export const NewLanguageEntrySchema = z.object({
+  language: z.string(),
+  proficiency: z.string(),
+  isVisible: z.boolean(),
+});
+
+export const toNewLanguageEntry = (object: unknown): LanguageEntry => {
+  return NewLanguageEntrySchema.parse(object);
+};
+
+// Certificates Entry Schema
+export const NewCertificateEntrySchema = z.object({
+  name: z.string(),
+  issueDate: z.string(),
+  expiryDate: z.string().optional(),
+  url: z.string().optional(),
+  isVisible: z.boolean(),
+});
+
+export const toNewCertificateEntry = (object: unknown): CertificateEntry => {
+  return NewCertificateEntrySchema.parse(object);
+};

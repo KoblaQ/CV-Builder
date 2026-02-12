@@ -335,25 +335,25 @@ const cvData: CvData[] = [
         isVisible: true,
       },
     ],
-    certifications: [
+    certificates: [
       {
         name: 'AWS Academy Graduate - AWS Academy Cloud Foundations',
-        issueDate: new Date('2023-06-01'),
+        issueDate: '2023-06-01',
         isVisible: true,
       },
       {
         name: 'Microsoft Certified: Azure Fundamentals',
-        issueDate: new Date('2023-06-01'),
+        issueDate: '2023-06-01',
         isVisible: true,
       },
       {
         name: 'Jira Fundamentals Badge',
-        issueDate: new Date('2023-03-01'),
+        issueDate: '2023-03-01',
         isVisible: true,
       },
       {
         name: 'Confluence Fundamentals Badge',
-        issueDate: new Date('2023-03-01'),
+        issueDate: '2023-03-01',
         isVisible: true,
       },
     ],

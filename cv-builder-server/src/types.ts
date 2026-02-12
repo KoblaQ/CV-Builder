@@ -2,7 +2,12 @@ import {
   NewAboutMeEntrySchema,
   NewUserEntrySchema,
   NewUserInfoEntrySchema,
-  NewWorkExperienceSchema,
+  NewWorkExperienceEntrySchema,
+  NewEducationEntrySchema,
+  NewSkillEntrySchema,
+  NewProjectEntrySchema,
+  NewLanguageEntrySchema,
+  NewCertificateEntrySchema,
 } from './utils';
 import { z } from 'zod';
 
@@ -76,10 +81,10 @@ export type LanguageEntry = {
   isVisible: boolean;
 };
 
-export type CertificationEntry = {
+export type CertificateEntry = {
   name: string;
-  issueDate: Date;
-  expiryDate?: Date;
+  issueDate: string;
+  expiryDate?: string;
   url?: string;
   isVisible: boolean;
 };
@@ -93,11 +98,18 @@ export interface CvData {
   skills: SkillEntry[];
   projects: ProjectEntry[];
   languages: LanguageEntry[];
-  certifications?: CertificationEntry[];
+  certificates?: CertificateEntry[];
 }
 
-// Infer from the schema
+// Infer from the schema (./utils)
 export type NewUserEntry = z.infer<typeof NewUserEntrySchema>;
 export type NewUserInfoEntry = z.infer<typeof NewUserInfoEntrySchema>;
 export type NewAboutMeEntry = z.infer<typeof NewAboutMeEntrySchema>;
-export type NewWorkExperienceEntry = z.infer<typeof NewWorkExperienceSchema>;
+export type NewWorkExperienceEntry = z.infer<
+  typeof NewWorkExperienceEntrySchema
+>;
+export type NewEducationEntry = z.infer<typeof NewEducationEntrySchema>;
+export type NewSkillEntry = z.infer<typeof NewSkillEntrySchema>;
+export type NewProjectEntry = z.infer<typeof NewProjectEntrySchema>;
+export type NewLanguageEntry = z.infer<typeof NewLanguageEntrySchema>;
+export type NewCertificateEntry = z.infer<typeof NewCertificateEntrySchema>;
