@@ -59,11 +59,17 @@ export type EducationEntry = {
   isVisible: boolean;
 };
 
+// SKILLS Category INFORMATION
+export interface SkillsCategory {
+  id: string;
+  name: string;
+}
+
 export type SkillEntry = {
   name: string;
-  category: string;
+  categoryId: string;
   keywords: string[];
-  orderIndex?: number;
+  // orderIndex?: number;
   isVisible: boolean;
 };
 

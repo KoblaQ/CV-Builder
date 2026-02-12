@@ -85,9 +85,9 @@ export const toNewEducationEntry = (object: unknown): EducationEntry => {
 // Skill Entry Schema
 export const NewSkillEntrySchema = z.object({
   name: z.string(),
-  category: z.string(),
+  categoryId: z.string(),
   keywords: z.array(z.string()),
-  orderIndex: z.number().optional(),
+  // orderIndex: z.number().optional(),
   isVisible: z.boolean(),
 });
 
