@@ -27,6 +27,9 @@ server/
 │ │
 │ ├── config/
 │ │ ├── db.ts
+| |
+| ├── types
+│ │ ├── types.ts
 │ │
 │ └── app.ts
 │
