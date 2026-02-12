@@ -4,6 +4,7 @@ import {
   AboutMeEntry,
   WorkExperienceEntry,
   EducationEntry,
+  NewSkillsCategoryEntry,
   SkillEntry,
   ProjectEntry,
   LanguageEntry,
@@ -80,6 +81,17 @@ export const NewEducationEntrySchema = z.object({
 
 export const toNewEducationEntry = (object: unknown): EducationEntry => {
   return NewEducationEntrySchema.parse(object);
+};
+
+// SkillsCategory Entry Schema
+export const NewSkillsCategoryEntrySchema = z.object({
+  name: z.string(),
+});
+
+export const toNewSkillsCategoryEntry = (
+  object: unknown,
+): NewSkillsCategoryEntry => {
+  return NewSkillsCategoryEntrySchema.parse(object);
 };
 
 // Skill Entry Schema

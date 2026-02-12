@@ -19,13 +19,14 @@ const findById = (id: string): User | undefined => {
 
 // Add User
 const addUser = async (entry: NewUserEntry): Promise<User> => {
+  const { password, ...rest } = entry; // Single out the password from the entry
   const saltRounds = Number(process.env.USER_SALT_ROUNDS); // Maybe place this in the .env file?
-  const passwordHash = await bcrypt.hash(entry.password, saltRounds);
+  const passwordHash = await bcrypt.hash(password, saltRounds);
 
   const newUserEntry = {
     id: uuid(),
-    ...entry,
-    password: passwordHash,
+    ...rest,
+    passwordHash, // Store the hashed password instead of the plain text
     cvs: [],
   };
 

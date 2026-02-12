@@ -4,6 +4,7 @@ import {
   NewUserInfoEntrySchema,
   NewWorkExperienceEntrySchema,
   NewEducationEntrySchema,
+  NewSkillsCategoryEntrySchema,
   NewSkillEntrySchema,
   NewProjectEntrySchema,
   NewLanguageEntrySchema,
@@ -63,6 +64,7 @@ export type EducationEntry = {
 export interface SkillsCategory {
   id: string;
   name: string;
+  isVisible: boolean;
 }
 
 export type SkillEntry = {
@@ -119,3 +121,6 @@ export type NewSkillEntry = z.infer<typeof NewSkillEntrySchema>;
 export type NewProjectEntry = z.infer<typeof NewProjectEntrySchema>;
 export type NewLanguageEntry = z.infer<typeof NewLanguageEntrySchema>;
 export type NewCertificateEntry = z.infer<typeof NewCertificateEntrySchema>;
+export type NewSkillsCategoryEntry = z.infer<
+  typeof NewSkillsCategoryEntrySchema
+>;

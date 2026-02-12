@@ -13,8 +13,8 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-"firstName": "Kafui",
-"lastName": "Kwabla",
-"email": "KafuiK@gmail.com",
-"password": "NEW_hashed_password_here"
+"firstName": "John",
+"lastName": "Doe",
+"email": "example@mail.com",
+"password": "hashedpassword"
 }
