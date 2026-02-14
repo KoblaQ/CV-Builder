@@ -15,14 +15,14 @@ router.get('/', (_req, res: Response<CvData[]>) => {
 });
 
 // Get CV by ID
-router.get('/:id', (req, res: Response<CvData | { error: string }>) => {
-  const cv = cvService.findById(String(req.params.id));
+// router.get('/:id', (req, res: Response<CvData | { error: string }>) => {
+//   const cv = cvService.findById(String(req.params.id));
 
-  if (cv) {
-    res.send(cv);
-  } else {
-    res.status(404).send({ error: 'CV not found' });
-  }
-});
+//   if (cv) {
+//     res.send(cv);
+//   } else {
+//     res.status(404).send({ error: 'CV not found' });
+//   }
+// });
 
 export default router;

@@ -2,7 +2,7 @@ import { CvData } from '../types';
 
 const cvData: CvData[] = [
   {
-    id: '1',
+    cvName: 'Developer CV',
     personalInfo: {
       name: 'EDEM QUASHIGAH',
       jobTitle: 'Software Developer',

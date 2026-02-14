@@ -1,5 +1,6 @@
 import {
   NewUserEntry,
+  UpdateUserEntry,
   UserInfoEntry,
   AboutMeEntry,
   WorkExperienceEntry,
@@ -9,6 +10,8 @@ import {
   ProjectEntry,
   LanguageEntry,
   CertificateEntry,
+  NewCvDataEntry,
+  UpdateCvDataEntry,
 } from './types';
 
 import { z } from 'zod';
@@ -24,6 +27,15 @@ export const NewUserEntrySchema = z.object({
 
 export const toNewUserEntry = (object: unknown): NewUserEntry => {
   return NewUserEntrySchema.parse(object);
+};
+
+// Update User Schema
+export const UpdateUserEntrySchema = NewUserEntrySchema.partial().omit({
+  password: true,
+});
+
+export const toUpdateUser = (object: unknown): UpdateUserEntry => {
+  return UpdateUserEntrySchema.parse(object);
 };
 
 // UserInfo Entry Schema
@@ -142,4 +154,29 @@ export const NewCertificateEntrySchema = z.object({
 
 export const toNewCertificateEntry = (object: unknown): CertificateEntry => {
   return NewCertificateEntrySchema.parse(object);
+};
+
+// CvData Entry Schema
+export const NewCvDataEntrySchema = z.object({
+  cvName: z.string(),
+  personalInfo: z.array(NewUserInfoEntrySchema),
+  // personalInfo: UserInfoEntry;
+  aboutMe: z.array(NewAboutMeEntrySchema),
+  workExperience: z.array(NewWorkExperienceEntrySchema),
+  education: z.array(NewEducationEntrySchema),
+  skills: z.array(NewSkillEntrySchema),
+  projects: z.array(NewProjectEntrySchema),
+  languages: z.array(NewLanguageEntrySchema),
+  certificates: z.array(NewCertificateEntrySchema).optional(),
+});
+
+export const toNewCvDataEntry = (object: unknown): NewCvDataEntry => {
+  return NewCvDataEntrySchema.parse(object);
+};
+
+// Update CvData Schema
+export const UpdateCvDataEntrySchema = NewCvDataEntrySchema.partial(); // Might need to use zod-deep-partial package for this
+
+export const toUpdateCvData = (object: unknown): UpdateCvDataEntry => {
+  return UpdateCvDataEntrySchema.parse(object);
 };

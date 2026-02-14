@@ -1,6 +1,7 @@
 import {
   NewAboutMeEntrySchema,
   NewUserEntrySchema,
+  UpdateUserEntrySchema,
   NewUserInfoEntrySchema,
   NewWorkExperienceEntrySchema,
   NewEducationEntrySchema,
@@ -9,12 +10,14 @@ import {
   NewProjectEntrySchema,
   NewLanguageEntrySchema,
   NewCertificateEntrySchema,
+  NewCvDataEntrySchema,
+  UpdateCvDataEntrySchema,
 } from './utils';
 import { z } from 'zod';
 
 // USER INFORMATION
-export type User = {
-  id: string;
+export type IUser = {
+  // id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -23,7 +26,7 @@ export type User = {
 };
 
 // Non-Sensitive User data
-export type NonSensitiveUser = Omit<User, 'id'>;
+export type NonSensitiveUser = Omit<IUser, 'id'>;
 
 export type UserInfoEntry = {
   name: string;
@@ -98,7 +101,7 @@ export type CertificateEntry = {
 };
 
 export interface CvData {
-  id: string;
+  cvName: string;
   personalInfo: UserInfoEntry;
   aboutMe: AboutMeEntry[];
   workExperience: WorkExperienceEntry[];
@@ -111,6 +114,7 @@ export interface CvData {
 
 // Infer from the schema (./utils)
 export type NewUserEntry = z.infer<typeof NewUserEntrySchema>;
+export type UpdateUserEntry = z.infer<typeof UpdateUserEntrySchema>;
 export type NewUserInfoEntry = z.infer<typeof NewUserInfoEntrySchema>;
 export type NewAboutMeEntry = z.infer<typeof NewAboutMeEntrySchema>;
 export type NewWorkExperienceEntry = z.infer<
@@ -124,3 +128,5 @@ export type NewCertificateEntry = z.infer<typeof NewCertificateEntrySchema>;
 export type NewSkillsCategoryEntry = z.infer<
   typeof NewSkillsCategoryEntrySchema
 >;
+export type NewCvDataEntry = z.infer<typeof NewCvDataEntrySchema>;
+export type UpdateCvDataEntry = z.infer<typeof UpdateCvDataEntrySchema>;

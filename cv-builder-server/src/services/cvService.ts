@@ -6,11 +6,11 @@ const getAllCvData = (): CvData[] => {
   return cvData;
 };
 
-const findById = (id: string): CvData | undefined => {
-  const cv = cvData.find((cv) => cv.id === id);
-  return cv;
-};
+// const findById = (id: string): CvData | undefined => {
+//   const cv = cvData.find((cv) => cv.id === id);
+//   return cv;
+// };
 export default {
   getAllCvData,
-  findById,
+  // findById,
 };

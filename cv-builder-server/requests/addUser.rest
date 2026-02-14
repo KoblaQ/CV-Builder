@@ -13,8 +13,19 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-"firstName": "John",
+"firstName": "Edem",
 "lastName": "Doe",
-"email": "example@mail.com",
+"email": "example2@mail.com",
+"password": "hashedpassword"
+}
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+"firstName": "Fafa",
+"lastName": "Doe",
+"email": "fafa@mail.com",
 "password": "hashedpassword"
 }

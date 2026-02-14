@@ -1,0 +1,8 @@
+###
+PUT http://localhost:3000/api/users/6990a3bfe26476cde90bda7f
+Content-Type: application/json
+
+{
+"lastName": "Doe",
+"email": "HAHAHAHA@mail.com"
+}
