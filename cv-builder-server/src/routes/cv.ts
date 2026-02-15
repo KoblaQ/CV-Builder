@@ -52,6 +52,18 @@ router.get('/:id', async (req, res: Response<CvData | { error: string }>) => {
   }
 });
 
+/**
+ * @openapi
+ * /api/cvs/{id}:
+ *   delete:
+ *     summary: Delete a CV
+ *     tags:
+ *        - CVS
+ *     responses:
+ *       200:
+ *         description: OK
+ */
+
 // Delete CV
 router.delete(
   '/:id',
@@ -111,6 +123,19 @@ router.post(
   },
 );
 
+/**
+ * @openapi
+ * /api/cvs/{id}:
+ *   put:
+ *     summary: Update a CV
+ *     tags:
+ *        - CVS
+ *     responses:
+ *       200:
+ *         description: OK
+ */
+
+// Update a cv section
 router.put(
   '/:cvId/:section/:itemId',
   async (
