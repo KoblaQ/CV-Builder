@@ -20,7 +20,7 @@ app.get('/ping', (_req, res) => {
   res.send('pong cv builder');
 });
 
-app.use('/api/cv', cvRouter);
+app.use('/api/cvs', cvRouter);
 app.use('/api/users', userRouter);
 app.use('/api/skillsCategories', skillsCategoryRouter);
 

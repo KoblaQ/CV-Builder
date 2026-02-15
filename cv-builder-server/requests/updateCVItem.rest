@@ -1,0 +1,9 @@
+PUT http://localhost:3000/api/cvs/69912062e28fe4946ed31c01/workExperience/69912062e28fe4946ed31c05
+Content-Type: application/json
+
+{
+
+  "companyName": "Tech Company",
+	"position": "Data Engineer"
+				
+}

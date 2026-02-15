@@ -1,0 +1,328 @@
+POST http://localhost:3000/api/cvs
+Content-Type: application/json
+
+{
+    "user": "698fb6fe1bc7f7fbc752e9d4",
+    "cvName": "Developer CV",
+    "personalInfo": {
+      "name": "EDEM QUASHIGAH",
+      "jobTitle": "Software Developer",
+      "location": "Helsinki, Finland",
+      "tel": "+358 45 123 4567",
+      "email": "edemq123@gmail.com",
+      "linkedIn": "https://www.linkedin.com/in/edemq/",
+      "gitHub": "https://github.com/KoblaQ"
+    },
+
+    "aboutMe": [
+      {
+        "role": "Software Developer",
+        "description": "A recent graduate with a strong foundation in full stack software development, experienced in React, Node.JS and PostgreSQL through academic projects and an internship as a software developer.\n\nI bring prior professional experience from other Finnish workplaces, where I developed teamwork, coordination, and communication skills in both English and Finnish.\n\nI am passionate about building meaningful technical solutions, thrive in collaborative environments, and continuously invest in expanding my skills.\n\nMy goal is to grow as a software developer in a dynamic and innovative environment.",
+        "isVisible": true
+      },
+      {
+        "role": "Backend Software Developer",
+        "description": "A recent graduate with a strong foundation in full stack software development, experienced in React, Node.JS and PostgreSQL through academic projects and an internship as a software developer.\n\nI bring prior professional experience from other Finnish workplaces, where I developed teamwork, coordination, and communication skills in both English and Finnish.\n\nI am passionate about building meaningful technical solutions, thrive in collaborative environments, and continuously invest in expanding my skills.\n\nMy goal is to grow as a software developer in a dynamic and innovative environment.",
+        "isVisible": false
+      }
+    ],
+    "workExperience": [
+      {
+        "companyName": "Hamk Tech Research Unit",
+        "position": "Software Developer Intern",
+        "startDate": "2024-05-22",
+        "endDate": "2024-10-22",
+        "isVisible": true,
+        "jobDescription": [
+          "Refactored and optimized existing codebase, improving performance and maintainability",
+          "Automated unit and integration tests to ensure high-quality deliverables",
+          "Migrated legacy projects from ‘Create React App’ to Vite, reducing build times and improving developer experience",
+          "Automated web app deployment using CI/CD pipelines (Azure, GitHub Actions)"
+        ]
+      },
+      {
+        "companyName": "RTK - Palvelu Oy",
+        "position": "Service Coordinator (Palveluohjaaja)",
+        "startDate": "2020-06-01",
+        "endDate": "2023-01-10",
+        "isVisible": true,
+        "jobDescription": [
+          "Coordinated work schedules and logistics for an international team of over 20 employees",
+          "Managed employee onboarding and training, improving team productivity",
+          "Acted as an interim supervisor, ensuring smooth operations during management absences"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Business Administration",
+        "fieldOfStudy": "Computer Applications",
+        "institution": "Häme University of Applied Sciences",
+        "startYear": 2022,
+        "endYear": 2025,
+        "gpa": "4.95/5",
+        "isVisible": true
+      },
+      {
+        "degree": "Master of Arts",
+        "fieldOfStudy": "Learning, Education and Technology",
+        "institution": "University of Oulu",
+        "startYear": 2015,
+        "endYear": 2017,
+        "isVisible": true
+      },
+      {
+        "degree": "Bachelor of Arts",
+        "fieldOfStudy": "Adult Education & Sociology",
+        "institution": "University of Ghana",
+        "startYear": 2010,
+        "endYear": 2014,
+        "isVisible": true
+      }
+    ],
+    "skills": [
+      {
+        "name": "JavaScript",
+        "categoryId": "Programming Languages",
+        "keywords": ["javascript", "node.js", "node", "react", "typescript"],
+        "isVisible": true
+      },
+      {
+        "name": "Python",
+        "categoryId": "Programming Languages",
+        "keywords": ["python"],
+        "isVisible": true
+      },
+      {
+        "name": "Java",
+        "categoryId": "Programming Languages",
+        "keywords": ["java", "jvm"],
+        "isVisible": true
+      },
+      {
+        "name": "React",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": [
+          "react",
+          "reactjs",
+          "react.js",
+          "react.ts",
+          "reactts",
+          "frontend"
+        ],
+        "isVisible": true
+      },
+      {
+        "name": "Node.js",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["node.js", "node", "javascript", "express"],
+        "isVisible": true
+      },
+      {
+        "name": "React Native",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["react", "mobile", "app", "react native", "reactnative"],
+        "isVisible": true
+      },
+      {
+        "name": "Robot Framework",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["python", "testing", "selenium"],
+        "isVisible": true
+      },
+      {
+        "name": "Jest",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["jest", "testing", "javascript"],
+        "isVisible": true
+      },
+      {
+        "name": "Selenium",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["selenium", "testing", "automation"],
+        "isVisible": true
+      },
+      {
+        "name": "ASP.NET",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["asp.net", "dotnet", ".net", "c#", "csharp", "backend"],
+        "isVisible": true
+      },
+      {
+        "name": "TypeScript",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["typescript", "ts", "javascript", "node.js", "react"],
+        "isVisible": true
+      },
+      {
+        "name": "Playwright",
+        "categoryId": "Frameworks and Libraries",
+        "keywords": ["playwright", "testing", "automation"],
+        "isVisible": true
+      },
+      {
+        "name": "Docker",
+        "categoryId": "Development Tools",
+        "keywords": [
+          "docker",
+          "containers",
+          "devops",
+          "ci/cd",
+          "github actions",
+          "azure"
+        ],
+        "isVisible": true
+      },
+      {
+        "name": "Visual Studio Code",
+        "categoryId": "Development Tools",
+        "keywords": ["vscode", "visual studio code", "code editor"],
+        "isVisible": true
+      },
+      {
+        "name": "Git",
+        "categoryId": "Development Tools",
+        "keywords": ["git", "version control", "github"],
+        "isVisible": true
+      },
+      {
+        "name": "Postman",
+        "categoryId": "Development Tools",
+        "keywords": ["postman", "api testing", "api client"],
+        "isVisible": true
+      },
+      {
+        "name": "Jira",
+        "categoryId": "Project Management and Collaboration",
+        "keywords": ["jira", "project management", "agile", "scrum"],
+        "isVisible": true
+      },
+      {
+        "name": "Confluence",
+        "categoryId": "Project Management and Collaboration",
+        "keywords": ["confluence", "documentation", "collaboration"],
+        "isVisible": true
+      },
+      {
+        "name": "Agile/Scrum",
+        "categoryId": "Project Management and Collaboration",
+        "keywords": ["agile", "scrum", "project management"],
+        "isVisible": true
+      },
+      {
+        "name": "MySQL",
+        "categoryId": "Database Management",
+        "keywords": ["mysql", "sql", "database", "relational database"],
+        "isVisible": true
+      },
+      {
+        "name": "PostgreSQL",
+        "categoryId": "Database Management",
+        "keywords": ["postgresql", "sql", "database", "relational database"],
+        "isVisible": true
+      },
+      {
+        "name": "MongoDB",
+        "categoryId": "Database Management",
+        "keywords": [
+          "mongodb",
+          "database",
+          "nosql",
+          "document database",
+          "mongo",
+          "mongoose"
+        ],
+        "isVisible": true
+      },
+      {
+        "name": "CI/CD (GitHub Actions)",
+        "categoryId": "Additional Skills",
+        "keywords": ["ci/cd", "github actions", "automation", "devops"],
+        "isVisible": true
+      },
+      {
+        "name": "HTML",
+        "categoryId": "Additional Skills",
+        "keywords": ["html", "markup language", "frontend"],
+        "isVisible": true
+      },
+      {
+        "name": "CSS",
+        "categoryId": "Additional Skills",
+        "keywords": ["css", "stylesheet", "frontend"],
+        "isVisible": true
+      },
+      {
+        "name": "UiPath (RPA)",
+        "categoryId": "Additional Skills",
+        "keywords": ["uipath", "rpa", "robotic process automation"],
+        "isVisible": true
+      },
+      {
+        "categoryId": "Additional Skills",
+        "name": "WordPress",
+        "keywords": ["wordpress", "cms", "website"],
+        "isVisible": true
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "Native",
+        "isVisible": true
+      },
+      {
+        "language": "Finnish",
+        "proficiency": "Fluent",
+        "isVisible": true
+      }
+    ],
+    "projects": [
+      {
+        "name": "Thesis project",
+        "description":
+          "Designed and implemented a role-based authentication and authorization system using .NET 9, PostgreSQL and JSON web tokens",
+        "techStack": [".NET 9", "PostgreSQL", "JWT"],
+        "url": "https://urn.fi/URN:NBN:fi:amk-2025060621260",
+        "isVisible": true
+      },
+      {
+        "name": "Pizza Ordering Mobile App",
+        "description":
+          "Used React-Native, Node.js, MongoDB and Google Cloud Platform (GCP) to create a cross-platform mobile application for a pizza restaurant.",
+        "techStack": ["React Native", "Node.js", "MongoDB", "GCP"],
+        "url": "https://github.com/KoblaQ/Mobile-Programming-Project",
+        "isVisible": true
+      },
+      {
+        "name": "Hotel Booking Management System",
+        "description":
+          "Used JavaScript (Node.js, Express) and MongoDB to create a hotel booking platform with secure CRUD functionalities",
+        "techStack": ["Node.js", "Express", "MongoDB"],
+        "url": "https://github.com/KoblaQ/Web-Framework-Project",
+        "isVisible": true
+      }
+    ],
+    "certificates": [
+      {
+        "name": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+        "issueDate": "2023-06-01",
+        "isVisible": true
+      },
+      {
+        "name": "Microsoft Certified: Azure Fundamentals",
+        "issueDate": "2023-06-01",
+        "isVisible": true
+      },
+      {
+        "name": "Jira Fundamentals Badge",
+        "issueDate": "2023-03-01",
+        "isVisible": true
+      },
+      {
+        "name": "Confluence Fundamentals Badge",
+        "issueDate": "2023-03-01",
+        "isVisible": true
+      }
+    ]
+  }

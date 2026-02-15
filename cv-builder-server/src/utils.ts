@@ -158,9 +158,10 @@ export const toNewCertificateEntry = (object: unknown): CertificateEntry => {
 
 // CvData Entry Schema
 export const NewCvDataEntrySchema = z.object({
+  user: z.string(),
   cvName: z.string(),
-  personalInfo: z.array(NewUserInfoEntrySchema),
-  // personalInfo: UserInfoEntry;
+  personalInfo: NewUserInfoEntrySchema,
+  // personalInfo: z.array(NewUserInfoEntrySchema),
   aboutMe: z.array(NewAboutMeEntrySchema),
   workExperience: z.array(NewWorkExperienceEntrySchema),
   education: z.array(NewEducationEntrySchema),
