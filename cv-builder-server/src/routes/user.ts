@@ -8,6 +8,23 @@ import { NewUserEntry, IUser, UpdateUserEntry } from '../types';
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     tags:
+ *       - Users
+ *     responses:
+ *       200:
+ *         description: List of all users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
 // Get all users
 router.get('/', async (_req, res: Response<IUser[]>) => {
   const users = await userService.getAllUsers();

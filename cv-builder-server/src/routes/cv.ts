@@ -13,10 +13,33 @@ const router = express.Router();
 // });
 
 // Get all CVs
+/**
+ * @openapi
+ * /api/cvs:
+ *   get:
+ *     summary: Get all CVs
+ *     tags:
+ *        - CVS
+ *     responses:
+ *       200:
+ *         description: OK
+ */
 router.get('/', async (_req, res: Response<CvData[]>) => {
   const cvs = await cvService.getAllCvData();
   res.send(cvs);
 });
+
+/**
+ * @openapi
+ * /api/cvs/{id}:
+ *  get:
+ *   summary: Get CV by id
+ *   tags:
+ *        - CVS
+ *   responses:
+ *     200:
+ *       description: OK
+ */
 
 // Get CV by ID
 router.get('/:id', async (req, res: Response<CvData | { error: string }>) => {
@@ -65,6 +88,17 @@ const newCVParser = (req: Request, _res: Response, next: NextFunction) => {
   }
 };
 
+/**
+ * @openapi
+ * /api/cvs/{cv}:
+ *   post:
+ *     summary: Create a CV
+ *     tags:
+ *        - CVS
+ *     responses:
+ *       201:
+ *         description: Created
+ */
 router.post(
   '/',
   newCVParser,

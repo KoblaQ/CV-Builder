@@ -15,14 +15,26 @@ import {
 } from './types';
 
 import { z } from 'zod';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
+
+extendZodWithOpenApi(z); // Adds openapi to all zod types
 
 // User Entry Schema
 export const NewUserEntrySchema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  password: z.string(),
-  cvs: z.array(z.string()).optional(),
+  firstName: z.string().openapi({ description: 'First Name', example: 'Edem' }),
+  lastName: z
+    .string()
+    .openapi({ description: 'Last Name', example: 'Quashigah' }),
+  email: z
+    .string()
+    .openapi({ description: 'User email', example: 'example@mail.com' }),
+  password: z
+    .string()
+    .openapi({ description: 'User password', example: 'password123!' }),
+  cvs: z
+    .array(z.string())
+    .optional()
+    .openapi({ description: 'Array of users created CVs' }),
 });
 
 export const toNewUserEntry = (object: unknown): NewUserEntry => {
