@@ -145,6 +145,7 @@ export const toNewLanguageEntry = (object: unknown): LanguageEntry => {
 
 // Certificates Entry Schema
 export const NewCertificateEntrySchema = z.object({
+  _id: z.string(),
   name: z.string(),
   issueDate: z.string(),
   expiryDate: z.string().optional(),

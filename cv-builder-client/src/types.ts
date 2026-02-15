@@ -17,6 +17,7 @@
 
 // USER INFORMATION
 export type IUser = {
+  _id?: string;
   // id: string;
   firstName: string;
   lastName: string;
@@ -29,6 +30,7 @@ export type IUser = {
 export type NonSensitiveUser = Omit<IUser, 'id'>;
 
 export type UserInfoEntry = {
+  _id?: string;
   name: string;
   jobTitle: string;
   location?: string;
@@ -39,12 +41,14 @@ export type UserInfoEntry = {
 };
 
 export type AboutMeEntry = {
+  _id?: string;
   role: string;
   description: string;
   isVisible: boolean;
 };
 
 export type WorkExperienceEntry = {
+  _id?: string;
   companyName: string;
   position: string;
   startDate: string;
@@ -54,6 +58,7 @@ export type WorkExperienceEntry = {
 };
 
 export type EducationEntry = {
+  _id?: string;
   degree: string;
   fieldOfStudy: string;
   institution: string;
@@ -65,12 +70,14 @@ export type EducationEntry = {
 
 // SKILLS Category INFORMATION
 export interface SkillsCategory {
+  _id?: string;
   id: string;
   name: string;
   isVisible: boolean;
 }
 
 export type SkillEntry = {
+  _id?: string;
   name: string;
   categoryId: string;
   keywords: string[];
@@ -79,6 +86,7 @@ export type SkillEntry = {
 };
 
 export type ProjectEntry = {
+  _id?: string;
   name: string;
   description: string;
   techStack: string[];
@@ -87,12 +95,14 @@ export type ProjectEntry = {
 };
 
 export type LanguageEntry = {
+  _id?: string;
   language: string;
   proficiency: string;
   isVisible: boolean;
 };
 
 export type CertificateEntry = {
+  _id: string;
   name: string;
   issueDate: string;
   expiryDate?: string;
