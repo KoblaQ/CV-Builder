@@ -7,13 +7,17 @@ interface Props {
   cvData: CvData | null;
 }
 
+// const updateSection = ({}) => {
+
+// }
+
 // Work Experience Component
 const WorkExperience = ({ cvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the about me info
 
   return workExperience ? (
     <div>
-      <WorkExperienceEntryForm workExperience={workExperience} />
+      <WorkExperienceEntryForm />
       <WorkExperienceDisplay workExperience={workExperience} />
     </div>
   ) : (

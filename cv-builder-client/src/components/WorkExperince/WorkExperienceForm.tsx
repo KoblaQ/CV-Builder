@@ -17,6 +17,8 @@ const WorkExperienceEntryForm = () => {
     isVisible: true,
   });
 
+  const [descriptionInput, setDescriptionInput] = useState('');
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
@@ -26,19 +28,37 @@ const WorkExperienceEntryForm = () => {
         isVisible: !newEntry.isVisible,
       }));
     } else if (name === 'description') {
-      // setNewEntry((newEntry) => ({...newEntry,jobDescription: value.split(',') }))
+      setDescriptionInput(value);
     } else {
       setNewEntry((newEntry) => ({ ...newEntry, [name]: value }));
     }
   };
 
-  // const toggleVisibility = (entry: React.ChangeEvent<HTMLInputElement>) => {
-  // 	setNewEntry({...entry, entry})
-  // }
+  const handleAddDescription = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    if (descriptionInput) {
+      setNewEntry((newEntry) => ({
+        ...newEntry,
+        jobDescription: [...newEntry.jobDescription, descriptionInput],
+      }));
+    }
+
+    setDescriptionInput('');
+  };
 
   const addEntry = (event: SyntheticEvent) => {
     event.preventDefault();
     console.log('submittedd');
+    console.log(newEntry);
+    setNewEntry({
+      companyName: '',
+      position: '',
+      startDate: '',
+      endDate: '',
+      jobDescription: [],
+      isVisible: true,
+    });
   };
   return (
     <div>
@@ -95,9 +115,17 @@ const WorkExperienceEntryForm = () => {
             <input
               type="text"
               name="description"
-              value={newEntry.jobDescription.join(', ')}
+              value={descriptionInput}
               onChange={handleChange}
             />
+            <button type="button" onClick={handleAddDescription}>
+              Add
+            </button>
+            <ul>
+              {newEntry.jobDescription.map((desc, index) => (
+                <li key={index}> {desc}</li>
+              ))}
+            </ul>
           </label>
         </div>
         <div>
@@ -108,12 +136,11 @@ const WorkExperienceEntryForm = () => {
               name="isVisible"
               checked={newEntry.isVisible}
               onChange={handleChange}
-              // value={newEntry.isVisible}
             />
           </label>
         </div>
 
-        <button>Add</button>
+        <button>Add Experience</button>
       </form>
     </div>
   );

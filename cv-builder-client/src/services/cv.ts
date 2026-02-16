@@ -10,6 +10,13 @@ const getAll = async () => {
   return data;
 };
 
+// Update CV SECTION
+const updateSection = async () => {
+  const { data } = await axios.put<CvData[]>(`${apiBaseUrl}/cvs`);
+  return data;
+};
+
 export default {
   getAll,
+  updateSection,
 };
