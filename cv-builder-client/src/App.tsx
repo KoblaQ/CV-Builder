@@ -3,13 +3,17 @@ import axios from 'axios';
 import type { CvData } from './types';
 
 import cvService from './services/cv';
+import { apiBaseUrl } from './constants';
+
+// Import Components
+import PersonalInfo from './components/PersonalInfo';
 
 function App() {
   const [cvData, setCvData] = useState<CvData | null>(null);
 
   // Fetch CV data from the backend API
   useEffect(() => {
-    void axios.get<void>(`http://localhost:3000/ping`);
+    void axios.get<void>(`${apiBaseUrl}/ping`);
 
     const fetchCVList = async () => {
       const cvs = await cvService.getAll();
@@ -18,40 +22,24 @@ function App() {
     void fetchCVList();
     console.log(cvData);
   }, []);
-  console.log(cvData);
+  // console.log(cvData);
 
-  // Group skills by category and sort by orderIndex
+  // Group skills by category for easier rendering
   const groupedSkills = useMemo(() => {
-    return (
-      cvData?.skills
-        .filter((skill) => skill.isVisible)
-        // .sort((a, b) => a.orderIndex - b.orderIndex)
-        .reduce<Record<string, typeof cvData.skills>>((acc, skill) => {
-          if (!acc[skill.categoryId]) acc[skill.categoryId] = [];
-          acc[skill.categoryId].push(skill);
-          return acc;
-        }, {})
-    );
+    return cvData?.skills
+      .filter((skill) => skill.isVisible)
+      .sort((a, b) => a.name.localeCompare(b.name)) // compare and sort them alphabetically
+      .reduce<Record<string, typeof cvData.skills>>((acc, skill) => {
+        if (!acc[skill.categoryId]) acc[skill.categoryId] = [];
+        acc[skill.categoryId].push(skill);
+        return acc;
+      }, {});
   }, [cvData?.skills]);
 
   return (
     <>
       <div>
-        <h1>{cvData?.personalInfo.name}</h1>
-        <h2>{cvData?.personalInfo.jobTitle}</h2>
-        <p>
-          <em>
-            {cvData?.personalInfo.location} | {cvData?.personalInfo.tel} |{' '}
-            {cvData?.personalInfo.email} |{' '}
-            <a href={cvData?.personalInfo.linkedIn} target="_blank">
-              {cvData?.personalInfo.linkedIn}
-            </a>{' '}
-            |{' '}
-            <a href={cvData?.personalInfo.gitHub} target="_blank">
-              {cvData?.personalInfo.gitHub}
-            </a>
-          </em>
-        </p>
+        <PersonalInfo cvData={cvData} />
         <h2>ABOUT ME</h2>
         <hr />
         <div>
