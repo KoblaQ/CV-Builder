@@ -1,4 +1,5 @@
 import WorkExperienceDisplay from './WorkExperienceDisplay';
+import WorkExperienceEntryForm from './WorkExperienceForm';
 
 import type { CvData } from '../../types';
 
@@ -6,11 +7,15 @@ interface Props {
   cvData: CvData | null;
 }
 
+// Work Experience Component
 const WorkExperience = ({ cvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the about me info
 
   return workExperience ? (
-    <WorkExperienceDisplay workExperience={workExperience} />
+    <div>
+      <WorkExperienceEntryForm workExperience={workExperience} />
+      <WorkExperienceDisplay workExperience={workExperience} />
+    </div>
   ) : (
     <div>...loading Relevant Work Experiences</div>
   );
