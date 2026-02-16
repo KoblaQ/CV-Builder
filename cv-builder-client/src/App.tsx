@@ -7,6 +7,7 @@ import { apiBaseUrl } from './constants';
 
 // Import Components
 import PersonalInfo from './components/PersonalInfo';
+import AboutMe from './components/AboutMe';
 
 function App() {
   const [cvData, setCvData] = useState<CvData | null>(null);
@@ -22,7 +23,7 @@ function App() {
     void fetchCVList();
     console.log(cvData);
   }, []);
-  // console.log(cvData);
+  console.log(cvData);
 
   // Group skills by category for easier rendering
   const groupedSkills = useMemo(() => {
@@ -40,19 +41,10 @@ function App() {
     <>
       <div>
         <PersonalInfo cvData={cvData} />
-        <h2>ABOUT ME</h2>
-        <hr />
-        <div>
-          {cvData?.aboutMe.map((entry, idx) => (
-            <div key={idx}>
-              <strong>{entry.role}</strong>
-              <p>{entry.description}</p>
-            </div>
-          ))}
-        </div>
-        <hr />
+        <AboutMe cvData={cvData} />
 
         <h2>RELEVANT WORK EXPERIENCE</h2>
+        <hr />
         {cvData?.workExperience.map((exp) => (
           <div key={exp.companyName}>
             <p>{exp.companyName}</p>
