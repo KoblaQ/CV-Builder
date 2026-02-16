@@ -51,7 +51,7 @@ app.use(cors());
 
 const PORT = 3000;
 
-app.get('/ping', (_req, res) => {
+app.get('/api/ping', (_req, res) => {
   console.log('Ping from cv builder');
   res.send('pong cv builder');
 });
