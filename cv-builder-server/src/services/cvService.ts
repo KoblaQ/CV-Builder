@@ -20,20 +20,6 @@ const addCV = async (entry: NewCvDataEntry): Promise<CvData> => {
   return savedCV;
 };
 
-// const updateSectionItem = async (
-//   itemId: string,
-//   updatedFields: any, // any because it should be able to update any section.
-// ): Promise<CvData | null> => {
-//   const updatedSection = await CV.findByIdAndUpdate(
-//     itemId,
-//     { $set: updatedFields },
-//     {
-//       new: true,
-//     },
-//   );
-//   return updatedSection;
-// };
-
 // Quite complicated but updates each single item in the sections.
 const updateSectionItem = async (
   cvId: string,
