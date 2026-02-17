@@ -1,11 +1,24 @@
 import WorkExperienceDisplay from './WorkExperienceDisplay';
 import WorkExperienceEntryForm from './WorkExperienceForm';
 
-import type { CvData } from '../../types';
+import type { CvData, WorkExperienceEntry } from '../../types';
+
+// import cvService from '../../services/cv';
 
 interface Props {
   cvData: CvData | null;
 }
+
+const defaultValues: WorkExperienceEntry = {
+  companyName: '',
+  position: '',
+  startDate: '',
+  endDate: '',
+  jobDescription: [],
+  isVisible: true,
+};
+
+// const edit;
 
 // const updateSection = ({}) => {
 
@@ -13,11 +26,11 @@ interface Props {
 
 // Work Experience Component
 const WorkExperience = ({ cvData }: Props) => {
-  const workExperience = cvData?.workExperience; // Extract the about me info
+  const workExperience = cvData?.workExperience; // Extract the workExperience info
 
   return workExperience ? (
     <div>
-      <WorkExperienceEntryForm />
+      <WorkExperienceEntryForm workExperience={defaultValues} />
       <WorkExperienceDisplay workExperience={workExperience} />
     </div>
   ) : (

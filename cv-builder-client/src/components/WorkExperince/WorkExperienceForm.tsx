@@ -2,47 +2,40 @@ import type { WorkExperienceEntry } from '../../types';
 
 import { useState, type SyntheticEvent } from 'react';
 
-// interface Props {
-//   workExperience: string;
-// }
+interface Props {
+  workExperience: WorkExperienceEntry;
+}
 
 // Work Experience Form Component
-const WorkExperienceEntryForm = () => {
-  const [newEntry, setNewEntry] = useState<WorkExperienceEntry>({
-    companyName: '',
-    position: '',
-    startDate: '',
-    endDate: '',
-    jobDescription: [],
-    isVisible: true,
-  });
+const WorkExperienceEntryForm = ({ workExperience }: Props) => {
+  const [newEntry, setNewEntry] = useState<WorkExperienceEntry>(workExperience);
 
   const [descriptionInput, setDescriptionInput] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    if (name === 'isVisible') {
-      setNewEntry((newEntry) => ({
-        ...newEntry,
-        isVisible: !newEntry.isVisible,
-      }));
-    } else if (name === 'description') {
-      setDescriptionInput(value);
-    } else {
-      setNewEntry((newEntry) => ({ ...newEntry, [name]: value }));
-    }
+    setNewEntry((newEntry) => {
+      if (name === 'isVisible') {
+        return { ...newEntry, isVisible: !newEntry?.isVisible };
+      } else {
+        return { ...newEntry, [name]: value };
+      }
+    });
   };
 
   const handleAddDescription = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    if (descriptionInput) {
-      setNewEntry((newEntry) => ({
-        ...newEntry,
-        jobDescription: [...newEntry.jobDescription, descriptionInput],
-      }));
-    }
+    setNewEntry((newEntry) => {
+      if (descriptionInput) {
+        return {
+          ...newEntry,
+          jobDescription: [...newEntry.jobDescription, descriptionInput],
+        };
+      }
+      return newEntry;
+    });
 
     setDescriptionInput('');
   };
@@ -51,14 +44,7 @@ const WorkExperienceEntryForm = () => {
     event.preventDefault();
     console.log('submittedd');
     console.log(newEntry);
-    setNewEntry({
-      companyName: '',
-      position: '',
-      startDate: '',
-      endDate: '',
-      jobDescription: [],
-      isVisible: true,
-    });
+    setNewEntry(workExperience);
   };
   return (
     <div>
@@ -70,7 +56,7 @@ const WorkExperienceEntryForm = () => {
             <input
               type="text"
               name="companyName"
-              value={newEntry.companyName}
+              value={newEntry?.companyName}
               onChange={handleChange}
             />
           </label>
@@ -81,7 +67,7 @@ const WorkExperienceEntryForm = () => {
             <input
               type="text"
               name="position"
-              value={newEntry.position}
+              value={newEntry?.position}
               onChange={handleChange}
             />
           </label>
@@ -92,7 +78,7 @@ const WorkExperienceEntryForm = () => {
             <input
               type="text"
               name="startDate"
-              value={newEntry.startDate}
+              value={newEntry?.startDate}
               onChange={handleChange}
             />
           </label>
@@ -104,7 +90,7 @@ const WorkExperienceEntryForm = () => {
             <input
               type="text"
               name="endDate"
-              value={newEntry.endDate}
+              value={newEntry?.endDate}
               onChange={handleChange}
             />
           </label>
@@ -116,13 +102,13 @@ const WorkExperienceEntryForm = () => {
               type="text"
               name="description"
               value={descriptionInput}
-              onChange={handleChange}
+              onChange={({ target }) => setDescriptionInput(target.value)}
             />
             <button type="button" onClick={handleAddDescription}>
               Add
             </button>
             <ul>
-              {newEntry.jobDescription.map((desc, index) => (
+              {newEntry?.jobDescription.map((desc, index) => (
                 <li key={index}> {desc}</li>
               ))}
             </ul>
@@ -134,7 +120,7 @@ const WorkExperienceEntryForm = () => {
             <input
               type="checkbox"
               name="isVisible"
-              checked={newEntry.isVisible}
+              checked={newEntry?.isVisible}
               onChange={handleChange}
             />
           </label>
