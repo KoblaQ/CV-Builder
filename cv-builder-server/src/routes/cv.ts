@@ -160,6 +160,31 @@ router.put(
   },
 );
 
+// Add a cv section item
+router.put(
+  '/:cvId/:section/',
+  async (
+    req: Request<
+      { cvId: string; section: keyof CvData },
+      unknown,
+      UpdateCvDataEntry
+    >,
+    res: Response<CvData | { error: string }>,
+  ) => {
+    const { cvId, section } = req.params;
+
+    const updateFields: Partial<CvData> = req.body;
+
+    const addedSection = await cvService.addSectionItem(
+      cvId,
+      section,
+      updateFields,
+    );
+
+    res.json(addedSection ?? { error: 'Error adding section' });
+  },
+);
+
 router.use(errorMiddleWare);
 
 export default router;

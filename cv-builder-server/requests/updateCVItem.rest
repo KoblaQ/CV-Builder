@@ -7,3 +7,21 @@ Content-Type: application/json
 	"position": "Data Engineer"
 				
 }
+
+
+###
+PUT http://localhost:3000/api/cvs/69912062e28fe4946ed31c01/workExperience/
+Content-Type: application/json
+
+{
+
+  "companyName": "RTK Company lalala",
+	"position": "Data Engineer",
+	"startDate": "2020-01-01",
+	"endDate": "2021-01-01",
+	"jobDescription": ["Worked on data pipelines and ETL processes.","ate like a bull"],
+	"isVisible": true
+	
+
+				
+}

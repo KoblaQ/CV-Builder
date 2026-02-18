@@ -49,8 +49,8 @@ const WorkExperienceEntryForm = ({
 
   const addEntry = (event: SyntheticEvent) => {
     event.preventDefault();
-    setNewEntry(workExperience);
     onSubmit(newEntry);
+    setNewEntry(workExperience);
   };
   return (
     <div>

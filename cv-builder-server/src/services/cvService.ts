@@ -43,6 +43,29 @@ const updateSectionItem = async (
   return updatedSection;
 };
 
+// Add the section item is similar to the update but without the itemId and with $push instead of $set
+const addSectionItem = async (
+  cvId: string,
+  section: keyof CvData, // so we use only valid names of the cv setions
+  // itemId: string,
+  updateFields: any, // any because it should be able to update any section.
+): Promise<CvData | null> => {
+  // const filter = { _id: cvId, [`${section}._id`]: itemId };
+
+  // const setPayload = Object.fromEntries(
+  //   Object.entries(updateFields).map(([key, value]) => [
+  //     `${section}.$.${key}`,
+  //     value,
+  //   ]),
+  // );
+  const itemToAdd = { $push: { [section]: updateFields } };
+
+  const updatedSection = await CV.findOneAndUpdate({ _id: cvId }, itemToAdd, {
+    returnDocument: 'after',
+  });
+  return updatedSection;
+};
+
 // Delete CV
 const deleteCV = async (id: string): Promise<CvData | null> => {
   const deletedCV = await CV.findByIdAndDelete(id);
@@ -54,5 +77,6 @@ export default {
   findById,
   addCV,
   updateSectionItem,
+  addSectionItem,
   deleteCV,
 };

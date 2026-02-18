@@ -123,6 +123,7 @@ export type CertificateEntry = {
 //   certificates?: CertificateEntry[];
 // };
 export interface CvData {
+  id?: string;
   user: string;
   cvName: string;
   personalInfo: UserInfoEntry;

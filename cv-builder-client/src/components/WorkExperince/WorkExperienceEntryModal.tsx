@@ -5,6 +5,7 @@ import type { WorkExperienceEntry } from '../../types';
 interface Props {
   modalOpen: boolean;
   onClose: () => void;
+  // onSubmit: (values: CvData) => void;
   onSubmit: (values: WorkExperienceEntry) => void;
   workExperience: WorkExperienceEntry;
 }
