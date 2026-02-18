@@ -4,10 +4,17 @@ import { useState, type SyntheticEvent } from 'react';
 
 interface Props {
   workExperience: WorkExperienceEntry;
+  onSubmit: (values: WorkExperienceEntry) => void;
+  onCancel: () => void;
+  // setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Work Experience Form Component
-const WorkExperienceEntryForm = ({ workExperience }: Props) => {
+const WorkExperienceEntryForm = ({
+  workExperience,
+  onSubmit,
+  onCancel,
+}: Props) => {
   const [newEntry, setNewEntry] = useState<WorkExperienceEntry>(workExperience);
 
   const [descriptionInput, setDescriptionInput] = useState('');
@@ -42,9 +49,8 @@ const WorkExperienceEntryForm = ({ workExperience }: Props) => {
 
   const addEntry = (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log('submittedd');
-    console.log(newEntry);
     setNewEntry(workExperience);
+    onSubmit(newEntry);
   };
   return (
     <div>
@@ -125,8 +131,12 @@ const WorkExperienceEntryForm = ({ workExperience }: Props) => {
             />
           </label>
         </div>
-
-        <button>Add Experience</button>
+        <div>
+          <button>Add Experience</button>
+          <button type="button" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

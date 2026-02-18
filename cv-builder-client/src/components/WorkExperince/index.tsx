@@ -1,7 +1,9 @@
 import WorkExperienceDisplay from './WorkExperienceDisplay';
-import WorkExperienceEntryForm from './WorkExperienceForm';
+import WorkExperieneEntryModal from './WorkExperienceEntryModal';
+// import WorkExperienceEntryForm from './WorkExperienceForm';
 
 import type { CvData, WorkExperienceEntry } from '../../types';
+import { useState } from 'react';
 
 // import cvService from '../../services/cv';
 
@@ -10,7 +12,7 @@ interface Props {
 }
 
 const defaultValues: WorkExperienceEntry = {
-  companyName: '',
+  companyName: 'COMPANY CHECK',
   position: '',
   startDate: '',
   endDate: '',
@@ -20,18 +22,64 @@ const defaultValues: WorkExperienceEntry = {
 
 // const edit;
 
-// const updateSection = ({}) => {
+// const updateSection = (values: WorkExperienceEntry) => {
+//   // UPDATE SECTION LOGIC HERE
+//   console.log('Updating Work Experience Section with values:', values);
+// };
+const handleSubmit = (values: WorkExperienceEntry) => {
+  // Submit SECTION LOGIC HERE depending on the update or new
 
-// }
+  console.log('Submitting Work Experience Section with values:', values);
+};
+
+// Handle Edit Button Click
+// const handleClickEdit = (event: SyntheticEvent) => {
+//   event.preventDefault();
+//   console.log('Edit clicked');
+// };
 
 // Work Experience Component
 const WorkExperience = ({ cvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the workExperience info
+  // const [edit, setEdit] = useState(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  // const [expId, setExpId] = useState(null);
 
+  const openModal = (): void => {
+    setModalOpen(true);
+    console.log('modal opened');
+  };
+
+  const closeModal = (): void => {
+    setModalOpen(false);
+    console.log('modal closed');
+  };
+
+  // const cvId = cvData?.id
+
+  // if (edit) {
+  //   setExpId(workExpeience?._id);
+  // }
   return workExperience ? (
     <div>
-      <WorkExperienceEntryForm workExperience={defaultValues} />
+      {/* <WorkExperienceEntryForm
+        workExperience={
+          edit ? { ...defaultValues, ...workExperience } : defaultValues
+        }
+        onSubmit={updateSection}
+        // setEdit={setEdit}
+      /> */}
+
       <WorkExperienceDisplay workExperience={workExperience} />
+
+      <WorkExperieneEntryModal
+        modalOpen={modalOpen}
+        onClose={closeModal}
+        onSubmit={handleSubmit}
+        workExperience={defaultValues}
+      />
+
+      <button onClick={() => openModal()}>ADD</button>
     </div>
   ) : (
     <div>...loading Relevant Work Experiences</div>
