@@ -39,6 +39,7 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the workExperience info
   // const [edit, setEdit] = useState(true);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+
   const [itemsToEdit, setItemsToEdit] = useState<WorkExperienceEntry>({
     companyName: '',
     position: '',
@@ -68,9 +69,20 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
     const section = 'workExperience';
     if (!cvId) return; // needs this to accept the cvId
 
-    console.log('Submitting Work Experience Section with values:', values);
-    const updatedCv = await cvService.AddSection(cvId, section, values);
-    setCvData(updatedCv);
+    if (values._id) {
+      console.log('trigger add the values', values);
+      const updatedCv = await cvService.updateSectionItem(
+        cvId,
+        section,
+        values._id,
+        values,
+      );
+      setCvData(updatedCv);
+    } else {
+      console.log('Submitting Work Experience Section with values:', values);
+      const updatedCv = await cvService.AddSection(cvId, section, values);
+      setCvData(updatedCv);
+    }
     closeModal();
   };
   // const cvId = cvData?.id

@@ -16,7 +16,7 @@ const getByID = async (id: string) => {
   return data;
 };
 
-// Update CV SECTION
+// // Update CV SECTION
 const updateSection = async () => {
   const { data } = await axios.put<CvData[]>(`${apiBaseUrl}/cvs`);
   return data;
@@ -35,9 +35,24 @@ const AddSection = async <T>(
   return data;
 };
 
+// Update CV Section with new work experience
+const updateSectionItem = async <T>(
+  cvId: string,
+  section: string,
+  objectId: string,
+  updateObject: T,
+) => {
+  const { data } = await axios.put<CvData>(
+    `${apiBaseUrl}/cvs/${cvId}/${section}/${objectId}`,
+    updateObject,
+  );
+  return data;
+};
+
 export default {
   getAll,
   getByID,
   updateSection,
+  updateSectionItem,
   AddSection,
 };
