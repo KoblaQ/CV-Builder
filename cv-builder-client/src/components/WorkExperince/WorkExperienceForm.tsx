@@ -1,12 +1,11 @@
 import type { WorkExperienceEntry } from '../../types';
 
-import { useState, type SyntheticEvent } from 'react';
+import { useEffect, useState, type SyntheticEvent } from 'react';
 
 interface Props {
   workExperience: WorkExperienceEntry;
   onSubmit: (values: WorkExperienceEntry) => void;
   onCancel: () => void;
-  // setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Work Experience Form Component
@@ -18,6 +17,11 @@ const WorkExperienceEntryForm = ({
   const [newEntry, setNewEntry] = useState<WorkExperienceEntry>(workExperience);
 
   const [descriptionInput, setDescriptionInput] = useState('');
+
+  // Needed to update the form values when the workExperience prop changes (e.g., when opening the modal for a different entry)
+  useEffect(() => {
+    setNewEntry(workExperience);
+  }, [workExperience]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -38,7 +42,10 @@ const WorkExperienceEntryForm = ({
       if (descriptionInput) {
         return {
           ...newEntry,
-          jobDescription: [...newEntry.jobDescription, descriptionInput],
+          jobDescription: [
+            ...(newEntry?.jobDescription || []),
+            descriptionInput,
+          ],
         };
       }
       return newEntry;
@@ -114,7 +121,7 @@ const WorkExperienceEntryForm = ({
               Add
             </button>
             <ul>
-              {newEntry?.jobDescription.map((desc, index) => (
+              {newEntry?.jobDescription?.map((desc, index) => (
                 <li key={index}> {desc}</li>
               ))}
             </ul>

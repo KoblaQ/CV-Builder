@@ -126,12 +126,12 @@ export interface CvData {
   user: string;
   cvName: string;
   personalInfo: UserInfoEntry;
-  aboutMe: AboutMeEntry[];
-  workExperience: WorkExperienceEntry[];
-  education: EducationEntry[];
-  skills: SkillEntry[];
-  projects: ProjectEntry[];
-  languages: LanguageEntry[];
+  aboutMe?: AboutMeEntry[];
+  workExperience?: WorkExperienceEntry[];
+  education?: EducationEntry[];
+  skills?: SkillEntry[];
+  projects?: ProjectEntry[];
+  languages?: LanguageEntry[];
   certificates?: CertificateEntry[];
 }
 

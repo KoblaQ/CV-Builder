@@ -13,7 +13,7 @@ interface Props {
 }
 
 const defaultValues: WorkExperienceEntry = {
-  companyName: 'COMPANY CHECK',
+  companyName: '',
   position: '',
   startDate: '',
   endDate: '',
@@ -39,11 +39,21 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the workExperience info
   // const [edit, setEdit] = useState(true);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [itemsToEdit, setItemsToEdit] = useState<WorkExperienceEntry>({
+    companyName: '',
+    position: '',
+    startDate: '',
+    endDate: '',
+    jobDescription: [],
+    isVisible: true,
+  });
+
   // const [expId, setExpId] = useState(null);
 
-  const openModal = (): void => {
+  const openModal = (entry: WorkExperienceEntry): void => {
     setModalOpen(true);
-    console.log('modal opened');
+    setItemsToEdit(entry);
+    console.log('modal opened', entry);
   };
 
   const closeModal = (): void => {
@@ -78,16 +88,24 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
         // setEdit={setEdit}
       /> */}
 
-      <WorkExperienceDisplay workExperience={workExperience} />
+      <WorkExperienceDisplay
+        workExperienceList={workExperience}
+        workExperience={itemsToEdit ?? defaultValues}
+        modalOpen={modalOpen}
+        onClose={closeModal}
+        onSubmit={handleSubmit}
+        onOpenModal={openModal}
+        // setItemsToEdit={setItemsToEdit}
+      />
 
       <WorkExperieneEntryModal
         modalOpen={modalOpen}
         onClose={closeModal}
         onSubmit={handleSubmit}
-        workExperience={defaultValues}
+        workExperience={itemsToEdit ?? defaultValues}
       />
 
-      <button onClick={() => openModal()}>ADD</button>
+      <button onClick={() => openModal(defaultValues)}>ADD</button>
     </div>
   ) : (
     <div>...loading Relevant Work Experiences</div>

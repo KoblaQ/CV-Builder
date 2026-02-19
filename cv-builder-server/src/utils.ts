@@ -162,12 +162,12 @@ export const NewCvDataEntrySchema = z.object({
   cvName: z.string(),
   personalInfo: NewUserInfoEntrySchema,
   // personalInfo: z.array(NewUserInfoEntrySchema),
-  aboutMe: z.array(NewAboutMeEntrySchema),
-  workExperience: z.array(NewWorkExperienceEntrySchema),
-  education: z.array(NewEducationEntrySchema),
-  skills: z.array(NewSkillEntrySchema),
-  projects: z.array(NewProjectEntrySchema),
-  languages: z.array(NewLanguageEntrySchema),
+  aboutMe: z.array(NewAboutMeEntrySchema).optional(),
+  workExperience: z.array(NewWorkExperienceEntrySchema).optional(),
+  education: z.array(NewEducationEntrySchema).optional(),
+  skills: z.array(NewSkillEntrySchema).optional(),
+  projects: z.array(NewProjectEntrySchema).optional(),
+  languages: z.array(NewLanguageEntrySchema).optional(),
   certificates: z.array(NewCertificateEntrySchema).optional(),
 });
 
