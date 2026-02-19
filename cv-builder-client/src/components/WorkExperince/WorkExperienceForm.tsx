@@ -35,6 +35,7 @@ const WorkExperienceEntryForm = ({
     });
   };
 
+  // Add descriptions to the list of job descriptions
   const handleAddDescription = (event: SyntheticEvent) => {
     event.preventDefault();
 
@@ -54,6 +55,16 @@ const WorkExperienceEntryForm = ({
     setDescriptionInput('');
   };
 
+  // Remove the descriptions or added descriptions
+  const handleRemoveDescription = (index: number) => {
+    {
+      setNewEntry((prev) => ({
+        ...prev,
+        jobDescription: prev?.jobDescription?.filter((_desc, i) => i !== index),
+      }));
+    }
+  };
+
   const addEntry = (event: SyntheticEvent) => {
     event.preventDefault();
     onSubmit(newEntry);
@@ -61,7 +72,6 @@ const WorkExperienceEntryForm = ({
   };
   return (
     <div>
-      <h2>Work Experience Form Here</h2>
       <form onSubmit={addEntry}>
         <div>
           <label htmlFor="companyName">
@@ -122,7 +132,18 @@ const WorkExperienceEntryForm = ({
             </button>
             <ul>
               {newEntry?.jobDescription?.map((desc, index) => (
-                <li key={index}> {desc}</li>
+                <div key={index}>
+                  <li>
+                    {' '}
+                    {desc}{' '}
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveDescription(index)}
+                    >
+                      remove
+                    </button>
+                  </li>
+                </div>
               ))}
             </ul>
           </label>
@@ -139,7 +160,8 @@ const WorkExperienceEntryForm = ({
           </label>
         </div>
         <div>
-          <button>Add Experience</button>
+          <button>{workExperience._id ? 'Update' : 'Add'}</button>
+          {/* <button>Add Experience</button> */}
           <button type="button" onClick={onCancel}>
             Cancel
           </button>

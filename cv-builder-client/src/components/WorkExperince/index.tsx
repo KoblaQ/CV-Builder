@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import WorkExperienceDisplay from './WorkExperienceDisplay';
 import WorkExperieneEntryModal from './WorkExperienceEntryModal';
 // import WorkExperienceEntryForm from './WorkExperienceForm';
@@ -21,19 +22,6 @@ const defaultValues: WorkExperienceEntry = {
   isVisible: true,
 };
 
-// const edit;
-
-// const updateSection = (values: WorkExperienceEntry) => {
-//   // UPDATE SECTION LOGIC HERE
-//   console.log('Updating Work Experience Section with values:', values);
-// };
-
-// Handle Edit Button Click
-// const handleClickEdit = (event: SyntheticEvent) => {
-//   event.preventDefault();
-//   console.log('Edit clicked');
-// };
-
 // Work Experience Component
 const WorkExperience = ({ cvData, setCvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the workExperience info
@@ -49,21 +37,24 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
     isVisible: true,
   });
 
-  // const [expId, setExpId] = useState(null);
+  // useEffect(() => {
+  //   setItemsToEdit(itemsToEdit);
+  //   console.log(itemsToEdit);
+  // }, [itemsToEdit]);
 
   const openModal = (entry: WorkExperienceEntry): void => {
     setModalOpen(true);
     setItemsToEdit(entry);
-    console.log('modal opened', entry);
+    // console.log('modal opened', entry);
   };
 
   const closeModal = (): void => {
     setModalOpen(false);
-    console.log('modal closed');
+    // console.log('modal closed');
   };
 
   const handleSubmit = async (values: WorkExperienceEntry): Promise<void> => {
-    // Submit SECTION LOGIC HERE depending on the update or new
+    // Submit SECTION LOGIC depending on the update or new
 
     const cvId: string | undefined = cvData?.id;
     const section = 'workExperience';

@@ -22,9 +22,11 @@ const WorkExperieneEntryModal = ({
         open={modalOpen}
         onClose={() => onClose()}
       >
-        <h1>Add New Experience</h1>
+        <h1>{workExperience._id ? 'Edit' : 'Add'} Work Experience</h1>
         <hr />
-        <div>Error Message Here</div>
+        <div>
+          <h3>Error Message Here</h3>
+        </div>
         <WorkExperienceEntryForm
           onSubmit={onSubmit}
           workExperience={workExperience}
