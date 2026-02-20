@@ -185,6 +185,28 @@ router.put(
   },
 );
 
+// Delete a cv section item
+router.delete(
+  '/:cvId/:section/:itemId',
+  async (
+    req: Request<
+      { cvId: string; section: keyof CvData; itemId: string },
+      unknown,
+      unknown
+    >,
+    res: Response<CvData | { error: string }>,
+  ) => {
+    const { cvId, section, itemId } = req.params;
+    const updatedCv = await cvService.deleteSectionItem(cvId, section, itemId);
+
+    if (updatedCv) {
+      res.json(updatedCv);
+    } else {
+      res.status(404).json({ error: 'Item not found' });
+    }
+  },
+);
+
 router.use(errorMiddleWare);
 
 export default router;

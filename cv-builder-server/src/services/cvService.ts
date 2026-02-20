@@ -66,6 +66,27 @@ const addSectionItem = async (
   return updatedSection;
 };
 
+// Delete CV SECTION
+const deleteSectionItem = async (
+  cvId: string,
+  section: keyof CvData,
+  itemId: string,
+): Promise<CvData | null> => {
+  const itemToDelete = {
+    $pull: { [section]: { _id: itemId } },
+  };
+
+  try {
+    const updatedCv = await CV.findOneAndUpdate({ _id: cvId }, itemToDelete, {
+      returnDocument: 'after',
+    });
+    return updatedCv;
+  } catch (error) {
+    console.error('Error deleting section item:', error);
+    return null;
+  }
+};
+
 // Delete CV
 const deleteCV = async (id: string): Promise<CvData | null> => {
   const deletedCV = await CV.findByIdAndDelete(id);
@@ -79,4 +100,5 @@ export default {
   updateSectionItem,
   addSectionItem,
   deleteCV,
+  deleteSectionItem,
 };

@@ -25,22 +25,10 @@ const defaultValues: WorkExperienceEntry = {
 // Work Experience Component
 const WorkExperience = ({ cvData, setCvData }: Props) => {
   const workExperience = cvData?.workExperience; // Extract the workExperience info
-  // const [edit, setEdit] = useState(true);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  const [itemsToEdit, setItemsToEdit] = useState<WorkExperienceEntry>({
-    companyName: '',
-    position: '',
-    startDate: '',
-    endDate: '',
-    jobDescription: [],
-    isVisible: true,
-  });
-
-  // useEffect(() => {
-  //   setItemsToEdit(itemsToEdit);
-  //   console.log(itemsToEdit);
-  // }, [itemsToEdit]);
+  const [itemsToEdit, setItemsToEdit] =
+    useState<WorkExperienceEntry>(defaultValues);
 
   const openModal = (entry: WorkExperienceEntry): void => {
     setModalOpen(true);
@@ -50,6 +38,7 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
 
   const closeModal = (): void => {
     setModalOpen(false);
+    setItemsToEdit(defaultValues);
     // console.log('modal closed');
   };
 
@@ -59,6 +48,7 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
     const cvId: string | undefined = cvData?.id;
     const section = 'workExperience';
     if (!cvId) return; // needs this to accept the cvId
+    // const {companyName, position, startDate } = values
 
     if (values._id) {
       console.log('trigger add the values', values);
@@ -76,39 +66,39 @@ const WorkExperience = ({ cvData, setCvData }: Props) => {
     }
     closeModal();
   };
-  // const cvId = cvData?.id
 
-  // if (edit) {
-  //   setExpId(workExpeience?._id);
-  // }
+  const handleDelete = async (values: WorkExperienceEntry): Promise<void> => {
+    const cvId: string | undefined = cvData?.id;
+    const section = 'workExperience';
+    const itemId: string | undefined = values?._id;
+    if (!cvId || !itemId) return;
+
+    const updatedCv = await cvService.deleteSectionItem(cvId, section, itemId);
+    if (updatedCv) {
+      setCvData(updatedCv);
+    }
+  };
+
   return workExperience ? (
     <div>
-      {/* <WorkExperienceEntryForm
-        workExperience={
-          edit ? { ...defaultValues, ...workExperience } : defaultValues
-        }
-        onSubmit={updateSection}
-        // setEdit={setEdit}
-      /> */}
-
       <WorkExperienceDisplay
         workExperienceList={workExperience}
-        workExperience={itemsToEdit ?? defaultValues}
+        workExperience={itemsToEdit}
         modalOpen={modalOpen}
         onClose={closeModal}
         onSubmit={handleSubmit}
         onOpenModal={openModal}
-        // setItemsToEdit={setItemsToEdit}
+        onDelete={handleDelete}
       />
 
       <WorkExperieneEntryModal
         modalOpen={modalOpen}
         onClose={closeModal}
         onSubmit={handleSubmit}
-        workExperience={itemsToEdit ?? defaultValues}
+        workExperience={itemsToEdit}
       />
 
-      <button onClick={() => openModal(defaultValues)}>ADD</button>
+      <button onClick={() => openModal(itemsToEdit)}>ADD</button>
     </div>
   ) : (
     <div>...loading Relevant Work Experiences</div>

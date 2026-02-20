@@ -49,10 +49,23 @@ const updateSectionItem = async <T>(
   return data;
 };
 
+// Delete CV Section Item (BASICALLY AN UPDATE SINCE ITS JUST UPDATING THE SECTION)
+const deleteSectionItem = async (
+  cvId: string,
+  section: string,
+  itemId: string,
+) => {
+  const { data } = await axios.delete<CvData>(
+    `${apiBaseUrl}/cvs/${cvId}/${section}/${itemId}`,
+  );
+  return data;
+};
+
 export default {
   getAll,
   getByID,
   updateSection,
   updateSectionItem,
   AddSection,
+  deleteSectionItem,
 };

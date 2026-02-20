@@ -1,3 +1,9 @@
 ###
 DELETE  http://localhost:3000/api/cvs/69910b4c6c9156e70b694a83
 Content-Type: application/json
+
+
+
+###
+DELETE	http://localhost:3000/api/cvs/69970c15473009a1269ccd0e/workExperience/69974383473009a1269cd3b6
+Content-Type: application/json

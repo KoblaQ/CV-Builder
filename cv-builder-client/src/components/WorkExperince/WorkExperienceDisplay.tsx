@@ -8,6 +8,7 @@ interface Props {
   onClose: () => void;
   onOpenModal: (entry: WorkExperienceEntry) => void;
   onSubmit: (values: WorkExperienceEntry) => void;
+  onDelete: (values: WorkExperienceEntry) => void;
 }
 
 const WorkExperienceDisplay = ({
@@ -17,6 +18,7 @@ const WorkExperienceDisplay = ({
   onClose,
   onOpenModal,
   onSubmit,
+  onDelete,
 }: Props) => {
   const visibleItems = workExperienceList?.filter((item) => item.isVisible); // Filter just for the Visible ones
 
@@ -42,6 +44,9 @@ const WorkExperienceDisplay = ({
           <div>
             <button type="button" onClick={() => onOpenModal(exp)}>
               Edit Details
+            </button>
+            <button type="button" onClick={() => onDelete(exp)}>
+              delete
             </button>
           </div>
         </div>
