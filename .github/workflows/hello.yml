@@ -38,16 +38,16 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: CHECK FOR SKIP
         env:
-          STATUS_BOOLEAN: ${{ github.event_name == 'pull_request' && contains(join(github.event.commits.*.message, ','), '#skip') }}
+          STATUS_BOOLEAN: ${{ contains(join(github.event.commits.*.message, ','), '#skip') }}
         run: echo "$STATUS_BOOLEAN"
   test_pull_request:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && contains(join(github.event.commits.*.message, ','), '#skip') }}
+    if: ${{ contains(join(github.event.commits.*.message, ','), '#skip') }}
     steps:
       - uses: actions/checkout@v4
       - name: SKIP SUCCESS CHECK
         env:
-          STATUS_BOOLEAN: ${{ github.event_name == 'pull_request' && contains(join(github.event.commits.*.message, ' '), '#skip') }}
+          STATUS_BOOLEAN: ${{ contains(join(github.event.commits.*.message, ' '), '#skip') }}
         run: echo "$STATUS_BOOLEAN"
       - name: Pull request github context
         env:
