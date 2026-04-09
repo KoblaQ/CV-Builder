@@ -2,7 +2,7 @@
 
 ## Description
 
-CV Builder is a SaaS MVP for dynamic CV tailoring based on job descriptions. It enables users to create, edit, and export CVs that match specific job requirements. The platform will support multi-user authentication, browser-based rendering, and PDF export..xxxx
+CV Builder is a SaaS MVP for dynamic CV tailoring based on job descriptions. It enables users to create, edit, and export CVs that match specific job requirements. The platform will support multi-user authentication, browser-based rendering, and PDF export..xxxxx
 
 ## Desired Features
 

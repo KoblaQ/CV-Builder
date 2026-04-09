@@ -47,7 +47,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: SKIP SUCCESS CHECK
         env:
-          STATUS_BOOLEAN: ${{ contains(join(github.event.commits.*.message, ' '), '#skip') }}
+          STATUS_BOOLEAN: ${{ !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         run: echo "$STATUS_BOOLEAN"
       - name: Pull request github context
         env:
